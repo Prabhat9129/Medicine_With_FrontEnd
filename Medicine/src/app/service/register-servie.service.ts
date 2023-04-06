@@ -18,12 +18,19 @@ export class RegisterServieService {
       password: password,
     };
 
-    this.http.post<post>('http://localhost:8080/signup', postdata).subscribe(
+    this.http.post<post>('http://localhost:8080/sigup', postdata).subscribe(
       (responsedata) => {
         console.log(responsedata);
       },
-      (error) => {
-        this.error.next(error.message);
+      (err) => {
+        console.log(err);
+        if (err.error.error) {
+          this.error.next(err.error.error);
+        } else if (err.error) {
+          this.error.next(err.error.message);
+        } else {
+          this.error.next('Unknown Error');
+        }
       }
     );
   }
