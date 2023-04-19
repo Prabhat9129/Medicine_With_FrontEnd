@@ -18,7 +18,7 @@ export class RegisterServieService {
       password: password,
     };
 
-    this.http.post<post>('http://localhost:8080/sigup', postdata).subscribe(
+    this.http.post<post>('http://localhost:8080/signup', postdata).subscribe(
       (responsedata) => {
         console.log(responsedata);
       },
